@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link id="icon" rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="stylesheet" href="styles/stylesheet.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- errors found here -->
+    <% if (info.fname.length > 0 && info.lname.length > 0 && info.email.length >
+    0) { %>
+    <h1>Thank you for submitting, <%= info.fname %>!</h1>
+    <h2>Order Details:</h2>
+    <p>Name: <%= info.fname %> <%= info.lname %></p>
+    <p>Job: <%= info.job %> at <%= info.company %></p>
+    <p>LinkedIn: <%= info.linkedin %></p>
+    <p>Email: <%= info.email %></p>
+    <p>how we met: <%= info.howMeet %></p>
+    <% } %>
+
+    <!-- errors found here -->
+    <% if (info.fname.length == 0) {%>
+    <p class="error">no first name!</p>
+    <% } %> <% if (info.lname.length == 0) {%>
+    <p class="error">no last name!</p>
+    <% } %> <% if (info.email.length == 0) {%>
+    <p class="error">no email!</p>
+    <% } %>
+
+    <form action="/home" method="post">
+      <button id="goButton" type="submit" type="text">Go Home</button>
+    </form>
+  </body>
+</html>

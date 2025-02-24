@@ -4,6 +4,8 @@ let data = [];
 
 const app = express();
 
+app.set("view engine", "ejs");
+
 app.use(express.static("public"));
 
 app.use(express.urlencoded({ extended: true }));
@@ -11,22 +13,36 @@ app.use(express.urlencoded({ extended: true }));
 const PORT = 3000;
 
 app.get("/", (req, res) => {
-  res.sendFile(`${import.meta.dirname}/views/home.html`);
+  res.render("home");
 });
 
 app.post("/confirmation", (req, res) => {
-  data.push(req.body);
-  res.sendFile(`${import.meta.dirname}/views/confirm.html`);
+  const timestamp = new Date(Date.now());
+
+  const info = {
+    fname: req.body.fname,
+    lname: req.body.lname,
+    job: req.body.job,
+    company: req.body.company,
+    linkedin: req.body.linkedin,
+    email: req.body.email,
+    howMeet: req.body.howMeet,
+    timestamp: timestamp,
+  };
+  console.log(data);
+  data.push(info);
+
+  res.render("confirm", { info });
 });
 
 app.get("/admin", (req, res) => {
-  res.send(data);
+  res.render("order-summery", { data });
   console.log(data);
 });
 
 app.post("/home", (req, res) => {
   data.push(req.body);
-  res.sendFile(`${import.meta.dirname}/views/home.html`);
+  res.render("home");
 });
 
 app.listen(PORT, () => {
