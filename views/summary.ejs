@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Order Summary</h1>
+
+    <% for (let i=0; i < responses.length; i++) { %>
+        <h2>Submission Details</h2>
+        <hr>
+        <p>Submission ID: <%= responses[i].id %></p>
+        <p>Name: <%= responses[i].first_name %> <%= responses[i].last_name %></p>
+        <p>You work as <%= responses[i].job %> at <%= responses[i].company %></p>
+        <p>LinkedIn: <%= responses[i].linkedin %></p>
+        <p>Email: <%= responses[i].email %></p>
+        <p>We met through: <%= responses[i].how_meet %></p>
+        <p>Message: <%= responses[i].content %></p>
+        <% if(responses[i].mailing > 0) { %>
+            <p>Mailing List: <%= responses[i].mailing %></p>
+        <% } else {%>
+            <p>Mailing List: Not subscribed</p>
+        <% } %>
+        <p>Time of Submission: <%= responses[i].post %> </p>
+    <% } %>
+
+</body>
+</html>

@@ -9,19 +9,19 @@
 </head>
 <body>
     <h1>Contact Form</h1>
-        <form action="/confirmation" method="post">
+        <form id = "guestbook-form" action="/confirmation" method="post">
             <section id = "contactInfo">
-                <label>First Name: <br><input type = "text" name = "fname"></label>
-                <label>Last Name: <br><input type = "text" name = "lname"></label> 
-                <label>Job Title: <br><input type = "text" name = "job"></label>
-                <label>Company: <br><input type = "text" name = "company"></label>
-                <label>LinkedIn URL: <br><input type = "text" name = "linkedin"></label>
-                <label>Email Address: <br><input type = "text" name = "email"></label>
+                <label>First Name: <br><input type = "text" id = "fname" name = "fname"><br><span class = "err" id = "err-first_name">First name is required</span></label>
+                <label>Last Name: <br><input type = "text" id = "lname" name = "lname"><br><span class = "err" id = "err-last_name">Last name is required</span></label> 
+                <label>Job Title: <br><input type = "text" id = "job" name = "job"><br><span class = "err" id = "err-job">Job Title is required</span></label>
+                <label>Company: <br><input type = "text" id = "company" name = "company"><br><span class = "err" id = "err-company">Company is required</span></label>
+                <label>LinkedIn URL: <br><input type = "text" id = "linkedin" name = "linkedin"><br><span class = "err" id = "err-linkedin1">LinkedIn is required<br></span><span class = "err" id = "err-linkedin2">LinkedIn is invalid</span></label>
+                <label>Email Address: <br><input type = "text" id = "email" name = "email"><br><span class = "err" id = "err-email1">Email is required<br></span><span class = "err" id = "err-email2">Email is invalid</span></label>
             </section>
 
             <section id = "howMeet">
                 <label> How did we meet? <br>
-                    <select name = "howMeet" id = "size">
+                    <select name = "how_meet" id = "how_meet">
                         <option value = "none">--- Select a Option ---</option>
                         <option value = "work">Through Work</option>
                         <option value = "event">Through a Event</option>
@@ -29,20 +29,22 @@
                         <option value = "school">Through School</option>
                         <option value = "mutual">Through a Mutual Friend</option>
                     </select>          
+                    <br><span class = "err" id = "err-how_meet">Please select how we met</span>
                 </label>  
             </section>
 
             <section id = "leaveMessage">
-                <label id = "messageB">Leave a message: <br><textArea></textArea></label>
+                <label>Leave a message: <br><textArea id = "content" name = "content" type = "text" rows = "4" columns = "50"></textArea></label>
             </section>
 
             <section id = "contact">
                 <label>
-                    <input type = "checkbox" name = "mailing" value = "confirm">Add me to your mailing list
+                    <input type = "checkbox" id = "mailing" name = "mailing" value = "confirm">Add me to your mailing list
                 </label>
             </section>
 
             <button id = "goButton" type = "submit" type = "text">Submit</button>
         </form>
+        <script src = "scripts/clientvalidation.js"></script>
     </body>
 </html>

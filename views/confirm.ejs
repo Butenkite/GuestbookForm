@@ -1,36 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link id="icon" rel="icon" type="image/png" href="images/favicon.png" />
-    <link rel="stylesheet" href="styles/stylesheet.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id = "icon" rel = "icon" type = "image/png" href = "images/favicon.png">
+    <link rel = "stylesheet" href = "styles/stylesheet.css">
     <title>Document</title>
-  </head>
-  <body>
-    <!-- errors found here -->
-    <% if (info.fname.length > 0 && info.lname.length > 0 && info.email.length >
-    0) { %>
-    <h1>Thank you for submitting, <%= info.fname %>!</h1>
-    <h2>Order Details:</h2>
-    <p>Name: <%= info.fname %> <%= info.lname %></p>
-    <p>Job: <%= info.job %> at <%= info.company %></p>
-    <p>LinkedIn: <%= info.linkedin %></p>
-    <p>Email: <%= info.email %></p>
-    <p>how we met: <%= info.howMeet %></p>
-    <% } %>
+</head>
+<body>
+    <h1>Thank you for your submission, <%= response.first_name %>!</h1>
 
-    <!-- errors found here -->
-    <% if (info.fname.length == 0) {%>
-    <p class="error">no first name!</p>
-    <% } %> <% if (info.lname.length == 0) {%>
-    <p class="error">no last name!</p>
-    <% } %> <% if (info.email.length == 0) {%>
-    <p class="error">no email!</p>
+    <h2>Submission Details</h2>
+    <p>Name: <%= response.first_name %> <%= response.last_name %></p>
+    <p>You work as <%= response.job %> at <%= response.company %></p>
+    <p>LinkedIn: <%= response.linkedin %></p>
+    <p>Email: <%= response.email %></p>
+    <p>We met through: <%= response.how_meet %></p>
+    <p>Message: <%= response.content %></p>
+    <% if(response.add_me == "confirm") { %>
+        <p>Mailing List: <%= response.add_me %></p>
+    <% } else {%>
+        <p>Mailing List: Not subscribed</p>
     <% } %>
-
-    <form action="/home" method="post">
-      <button id="goButton" type="submit" type="text">Go Home</button>
-    </form>
-  </body>
+</body>
 </html>
